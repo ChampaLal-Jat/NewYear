@@ -1,0 +1,236 @@
+@import url('https://fonts.googleapis.com/css2?family=Potta+One&family=Quicksand:wght@300&display=swap');
+
+body{
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: repeating-radial-gradient(circle at 0 0,#eee,#ccc 300px) ;
+    overflow: hidden;
+    animation: ani  5s linear infinite;
+}
+
+@keyframes ani {
+    0%{
+        background: repeating-radial-gradient(circle at 0 0,#eee,#ccc 300px) ;
+    }
+    25%{
+        background: repeating-radial-gradient(circle at  100% 0,#eee,#ccc 300px) ;
+    }
+    75%{
+        background: repeating-radial-gradient(circle at 100% 100%,#eee,#ccc 300px) ;
+    }
+    100%{
+        background: repeating-radial-gradient(circle at  0 100%,#eee,#ccc 300px) ;
+    }
+}
+
+
+
+
+
+.center{
+    position: relative;
+    width: 400px;
+}
+
+.center div{
+    position: relative;
+    /* background: #000; */
+    height: 100px;
+    margin: 6px;
+    transform: skewY(-10deg);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 2;
+
+}
+
+.center div:nth-child(2){
+    transform: skewY(19.5deg);
+    /* background: red; */
+    z-index: 1;
+}
+
+
+
+.center div::before{
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+
+}
+
+.center div:nth-child(1)::before,
+.center div:nth-child(3)::before{
+    background: linear-gradient(-160deg,rgb(160, 134, 134),#ccc);
+    transform: scaleX(0);
+}
+
+.center div:nth-child(2)::before{
+    background: linear-gradient(-20deg,rgb(160, 134, 134),#ccc);
+    transform: scaleX(0);
+}
+
+.center div:nth-child(1)::before{
+    animation: animate 1s linear forwards;
+    transform-origin: right;
+    animation-delay: 5s;
+}
+
+.center div:nth-child(2)::before{
+    animation: animate 1s linear forwards;
+    transform-origin: left;
+    animation-delay: 6s;
+}
+.center div:nth-child(3)::before{
+    animation: animate 1s linear forwards;
+    transform-origin: right;
+    animation-delay: 7s;
+}
+
+
+.center h2{
+    position: relative;
+    margin: 0;
+    padding: 0;
+    color: rgb(102 94 94);
+    opacity: 0;
+    z-index: 10;
+    font-weight: bold;
+}
+
+.center div:nth-child(1) h2{
+    animation: fadeText 1s linear forwards;
+    animation-delay: 6s;
+    font-size: 40px;
+}
+
+.center div:nth-child(3) h2{
+    animation: fadeText 1s linear forwards;
+    animation-delay: 8s;
+    font-size: 90px;
+    font-weight: 800;
+
+}
+
+@keyframes fadeText{
+    0%{
+        opacity: 0;
+    }
+    100%{
+        opacity: 1;
+    }
+}
+
+
+.loading{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 15;
+    animation: fadeout 5s linear forwards;
+}
+
+@keyframes fadeout {
+    0%,91%
+    {
+        opacity: 1;
+        visibility: visible;
+    }
+    100%
+    {
+        opacity: 0;
+        visibility: hidden;
+    }
+    
+}
+
+.loading h2{
+    color: green;
+}
+
+.loading .bar{
+    position: relative;
+    width: 400px;
+    height: 40px;
+    background: transparent;
+    margin: 0 20px;
+    box-sizing: border-box;
+}
+
+.loading .bar::before{
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(#eee,#ccc);
+    border-bottom: 2px solid black;
+    border-radius: 32px;
+    transform-origin: left;
+    animation: animate 4s linear forwards;
+}
+
+@keyframes animate {
+    0%{
+        transform: scaleX(0);
+    }
+    100%{
+        transform: scaleX(1);
+    }
+    
+}
+
+.loading .bar::after{
+    content: 'Loading...';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 10px;
+    text-align: center;
+    line-height: 36px;
+    color: gray;
+    font-size: 20px;
+    /* mix-blend-mode: difference; */
+}
+
+.quotes{
+    animation: que 5s linear forwards;
+    opacity: 0;
+    visibility: hidden;
+    animation-delay: 4s;
+    transform-origin: bottom;
+    font-weight:bold;
+    color: rgb(102 94 94);
+    
+}
+
+@keyframes que {
+    0%,91%
+    {
+        opacity: 0;
+        visibility: hidden;
+    }
+    100%
+    {
+        opacity: 1;
+        visibility: visible;
+    }
+    
+}
+
